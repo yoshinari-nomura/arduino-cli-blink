@@ -1,7 +1,14 @@
 * Arduino project with arduino-cli and Makefile
-
 ** How to Build
    Install arduino-cli and make
-   : URL=https://raw.githubusercontent.com/arduino/arduino-cli/master/install.sh
-   : curl -fsSL $URL | BINDIR=~/local/bin sh
-   : make
+   #+begin_src shell-script
+     # Download arduino-cli to PWD:
+     make setup-arduino-cli
+     mv ./arduino-cli YOUR_BIN_DIRECTORY
+     # If it is the first time to use arduino-cli:
+     arduino-cli config init --log
+     # build and upload and monitor
+     make
+     make upload
+     make monitor
+   #+end_src
