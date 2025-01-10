@@ -1,0 +1,36 @@
+#
+# Sketch project file - Arduino CLI
+#    https://arduino.github.io/arduino-cli/0.36/sketch-project-file/
+#
+# Setup:
+#
+# To add core url for your platform:
+#   arduino-cli config init # If you do not have config file ~/.arduino15/arduino-cli.yaml
+#   arduino-cli config add board_manager.additional_urls https://static-cdn.m5stack.com/resource/arduino/package_m5stack_index.json
+#
+# To find "platform" such as m5stack:esp32 (2.1.1):
+#   arduino-cli core update-index
+#   arduino-cli core search
+#
+# To install core
+#   arduino-cli core install m5stack:esp32
+#
+# To find your board FQBN:
+#   arduino-cli board listall
+#   # NOTE: board command is not effective until install core.
+#
+# To check board details (build menu):
+#   arduino-cli board details -b m5stack:esp32:m5stack_atoms3
+#
+# To search libraries:
+#   arduino-cli lib search M5GFX
+#
+profiles:
+  m5stamp-c3:
+    notes: M5StampC3
+    fqbn: m5stack:esp32:m5stack_stamp_c3
+    platforms:
+      - platform: m5stack:esp32 (2.1.1)
+        platform_index_url: https://static-cdn.m5stack.com/resource/arduino/package_m5stack_index.json
+    libraries:
+      - FastLED (3.9.10)

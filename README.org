@@ -1,0 +1,7 @@
+* Arduino project with arduino-cli and Makefile
+
+** How to Build
+   Install arduino-cli and make
+   : URL=https://raw.githubusercontent.com/arduino/arduino-cli/master/install.sh
+   : curl -fsSL $URL | BINDIR=~/local/bin sh
+   : make
