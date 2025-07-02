@@ -1,39 +1,26 @@
 ################################################################
 # Makefile for arduino-cli.
 # 2024-11-22 Yoshinari Nomura
+# https://github.com/yoshinari-nomura/arduino-cli-blink/
 ################################################################
 
 ################################################################
-# Build settings. You may override in env.mk
+# You should override these settings in project.mk
 
 # PROF_NAME should be a name listed in sketch.yaml
-#
-PROF_NAME := m5stamp-c3
-
-# In case WSL2, uploader is arduino-cli.exe and serial is COMx.
-#
-ifneq (,$(findstring microsoft,$(shell uname -r)))
-SERIAL_TOOL := arduino-cli.exe
-PORT        := COM1
-else
-SERIAL_TOOL := arduino-cli
-PORT        := /dev/ttyACM1
-endif
+PROF_NAME     := esp32-dev
+SERIAL_TOOL   := arduino-cli
+PORT          := /dev/ttyUSB0
+SPEED         := 115200
 
 # clangd searches build/compile_commands.json,
 # I recommend you to set BUILD_DIR to ./build
-#
-BUILD_DIR := ./build
-
-# Serial speed on monitor.
-#
-SPEED     := 115200
+BUILD_DIR     := ./build
 
 # Comma-separated build options.
 # To check available settings:
 #   make show-default-board-options
-#
-BOARD_OPTIONS="CDCOnBoot=default"
+BOARD_OPTIONS := ""
 
 ################################################################
 # Utilities
@@ -49,8 +36,8 @@ fqbn = $(shell arduino-cli compile \
 ################################################################
 # Override default settings
 
-ifneq ("$(wildcard env.mk)","")
-   include env.mk
+ifneq ("$(wildcard project.mk)","")
+   include project.mk
 endif
 
 ################################################################
@@ -63,6 +50,7 @@ build:
 	--board-options $(BOARD_OPTIONS) \
 	--profile $(PROF_NAME) \
 	--build-path $(BUILD_DIR) \
+	--build-property compiler.cpp.extra_flags=$(EXTRA_FLAGS) \
 	--log
 
 upload:
