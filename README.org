@@ -1,3 +1,14 @@
+#+TITLE: Arduino CLI Project Template
+#+AUTHOR: Yoshinari Nomura
+#+EMAIL:
+#+DATE: 2025-06-14
+#+OPTIONS: H:3 num:2 toc:nil
+#+OPTIONS: ^:nil \n:nil ::t |:t f:t tex:t
+#+OPTIONS: d:nil tags:t
+#+OPTIONS: author:t email:nil creator:nil
+#+OPTIONS: timestamp:nil timestamps:nil
+#+LANGUAGE: en
+
 * Arduino project with arduino-cli and Makefile
 ** How to Build
    Install arduino-cli and make
