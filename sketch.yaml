@@ -1,6 +1,6 @@
 #
 # Sketch project file - Arduino CLI
-#    https://arduino.github.io/arduino-cli/0.36/sketch-project-file/
+#   https://arduino.github.io/arduino-cli/1.2/sketch-project-file/
 #
 # Setup:
 #
@@ -26,11 +26,28 @@
 #   arduino-cli lib search M5GFX
 #
 profiles:
-  m5stamp-c3:
-    notes: M5StampC3
+  esp32-dev:
+    notes: "ESP32 Dev Module https://github.com/espressif/arduino-esp32"
+    fqbn: esp32:esp32:esp32
+    platforms:
+      - platform: esp32:esp32 (2.0.11)
+        platform_index_url: https://espressif.github.io/arduino-esp32/package_esp32_index.json
+
+  m5stamp-c3: &m5stamp-c3
+    notes: "M5StampC3 https://docs.m5stack.com/ja/arduino/arduino_board"
     fqbn: m5stack:esp32:m5stack_stamp_c3
     platforms:
       - platform: m5stack:esp32 (2.1.1)
         platform_index_url: https://static-cdn.m5stack.com/resource/arduino/package_m5stack_index.json
     libraries:
       - FastLED (3.9.10)
+
+  m5stamp-c3u:
+    <<: *m5stamp-c3
+
+  xiao-c3:
+    notes: Seeed Studio XIAO ESP32C3
+    fqbn: esp32:esp32:XIAO_ESP32C3
+    platforms:
+      - platform: esp32:esp32 (2.0.11)
+        platform_index_url: https://espressif.github.io/arduino-esp32/package_esp32_index.json
